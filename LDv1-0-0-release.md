@@ -24,7 +24,7 @@ This document covers usage, API, configuration models, backends, and operational
 ## Quick start
 
 ```python
-from src.livedict.core import LiveDict
+from livedict import LiveDict
 
 # simple default LiveDict
 d = LiveDict()
@@ -45,7 +45,7 @@ d.stop()
 For an asyncio-friendly wrapper use `AsyncLiveDict` which offloads calls to a threadpool:
 
 ```python
-from src.livedict.core import AsyncLiveDict
+from livedict import AsyncLiveDict
 
 ad = AsyncLiveDict()
 await ad.set("k", {"v":1}, ttl=10)
@@ -73,7 +73,7 @@ Optional (for production-grade features):
 Install examples:
 
 ```bash
-pip install pydantic cryptography pyyaml redis
+pip install livedict
 ```
 
 ---
@@ -213,7 +213,7 @@ Factory helpers:
 ## Example: durable configuration (SQLite mirror)
 
 ```python
-from src.livedict.core import LiveDict, LiveDictFluentBuilder
+from livedict import LiveDict, LiveDictFluentBuilder
 
 cfg = (
     LiveDictFluentBuilder()
@@ -247,5 +247,6 @@ MIT License. © 2025 LiveDict. All rights reserved.
 ---
 
 *End of release documentation for release version 1.0.0.*
+
 
 
