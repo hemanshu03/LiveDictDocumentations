@@ -1,4 +1,4 @@
-# LiveDict — Release Documentation
+# LiveDict - Release v1.0.0 Documentation
 
 **Version:** 1.0.0 (release)
 
@@ -253,3 +253,4 @@ For patches and issues: open a PR or issue against your repository. Ensure tests
 ---
 
 *End of release documentation for release version 1.0.0.*
+
