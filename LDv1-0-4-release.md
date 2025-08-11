@@ -1,6 +1,6 @@
-# LiveDict - Release v1.0.0 Documentation
+# LiveDict - Release v1.0.4 Documentation
 
-**Version:** 1.0.0 (release)
+**Version:** 1.0.4 (release)
 
 A compact, production-minded, in-memory encrypted ephemeral key-value store with optional persistence backends.
 
@@ -229,7 +229,7 @@ ld.set("session:123", {"user_id": 42}, ttl=600, persist=True, backend="sql")
 
 ---
 
-## Changelog for Release v1.0.0
+## Changelog for Release v1.0.4
 
 * Initial release of LiveDict core module.
 * AES-GCM encryption with deterministic fallback.
@@ -246,7 +246,8 @@ MIT License. © 2025 LiveDict. All rights reserved.
 
 ---
 
-*End of release documentation for release version 1.0.0.*
+*End of release documentation for release version 1.0.4.*
+
 
 
 
