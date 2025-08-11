@@ -229,7 +229,7 @@ ld.set("session:123", {"user_id": 42}, ttl=600, persist=True, backend="sql")
 
 ---
 
-## Changelog (v1.0.0)
+## Changelog for Release v1.0.0
 
 * Initial release of LiveDict core module.
 * AES-GCM encryption with deterministic fallback.
@@ -242,15 +242,10 @@ ld.set("session:123", {"user_id": 42}, ttl=600, persist=True, backend="sql")
 
 ## License & authorship
 
-Include your preferred license text here (MIT/Apache-2.0/etc.) when releasing this module publicly.
-
----
-
-## Contact & contribution
-
-For patches and issues: open a PR or issue against your repository. Ensure tests cover heap rebuild, expiry hooks, backend persistence, and decryption across restarts.
+MIT License. © 2025 LiveDict. All rights reserved.
 
 ---
 
 *End of release documentation for release version 1.0.0.*
+
 
