@@ -1,4 +1,4 @@
-# LiveDict v2.0.2 Documentation
+# LiveDict v2.0.0 Documentation
 
 **TTL-based, Persistent / Ephemeral Python Dictionary with Hook Callbacks and Sandbox**
 
@@ -55,7 +55,6 @@ pip install livedict
 * Per-key **locking** for safe concurrent access.
 * **Multiple backends**: memory, SQLite, Redis.
 * **Synchronous & Asynchronous** APIs.
-* Callbacks now run correctly with **no duplication or re-entrancy** issues (fixed in v2.0.2).
 
 ---
 
@@ -103,9 +102,6 @@ asyncio.run(main())
 ### TTL / Expiry
 
 ```python
-import time
-from livedict import LiveDict
-
 live = LiveDict(work_mode='sync', backend='memory')
 live.set('temp', 'expire-me', ttl=2)
 print(live.get('temp'))  # 'expire-me'
@@ -117,7 +113,7 @@ print(live.get('temp'))  # None
 
 ### Callbacks
 
-Callbacks are executed **on events** like `set` or `expire`.
+Callbacks are executed **on events** like `set`, `expire`.
 
 ```python
 def on_set(key, val):
@@ -130,12 +126,10 @@ cb1 = live.register_callback('set', on_set)
 cb2 = live.register_callback('expire', on_expire, is_async=True)
 ```
 
-* **Disable/Enable callback**:
-  `live.set_callback_enabled(cb1, False)`
-* **Unregister callback**:
-  `live.unregister_callback(cb2)`
+* **Disable/Enable callback**: `live.set_callback_enabled(cb1, False)`
+* **Unregister callback**: `live.unregister_callback(cb2)`
 
-#### Async multiple callbacks workaround
+**Async multiple callbacks workaround:**
 
 ```python
 async def main_callback(key, val):
@@ -144,8 +138,6 @@ async def main_callback(key, val):
 live.register_callback('expire', main_callback, is_async=True)
 ```
 
-> **Note (v2.0.2):** Fixed duplicate callback invocation caused by redundant async loop handling in `_trigger_event`.
-
 ---
 
 ### Sandbox
@@ -153,16 +145,12 @@ live.register_callback('expire', main_callback, is_async=True)
 Sandboxed execution prevents **exceptions or slow callbacks** from affecting the main store.
 
 ```python
-import time
-from livedict import LiveDict
-
 def bad_callback(key, val):
     raise RuntimeError('Oops!')
 
 def slow_callback(key, val):
     time.sleep(3)
 
-live = LiveDict(work_mode='sync', backend='memory')
 live.register_callback('set', bad_callback)
 live.register_callback('set', slow_callback, timeout=1.0)
 live.set('x', 99)  # Exceptions handled safely
@@ -173,18 +161,13 @@ live.set('x', 99)  # Exceptions handled safely
 ### Per-Key Locking
 
 ```python
-from livedict import LiveDict
-
-live = LiveDict(work_mode='sync', backend='memory')
 live.set('counter', 1)
-
 if live.lock('counter', timeout=1):
     try:
         val = live.get('counter')
         live.set('counter', val + 1)
     finally:
         live.unlock('counter')
-
 print(live.get('counter'))  # Updated safely
 ```
 
@@ -192,63 +175,42 @@ print(live.get('counter'))  # Updated safely
 
 ## Example Usage
 
-See `test_sync.py` and `test_async.py` in the repository for complete demonstrations of:
+See `testfile.py` in the repository for a complete demonstration of:
 
 * Sync & Async usage
 * TTL / Expiry
-* Callback behavior (with sandbox)
-* Locking & concurrency
-* SQLite & Redis backend examples
+* Callbacks
+* Sandbox safety
+* Locking
+* SQLite & Redis backends
 
 ---
 
 ## Changelog
 
-### [2.0.2] – 2025-10-05
+### [2.0.0] - 2025-10-04
 
-**Changed**
+**Added:**
 
-* Fixed duplicate callback invocation caused by redundant async retry handling in `_trigger_event`.
+* Google-style docstrings across modules.
+* Active sandbox functionality.
 
----
+**Changed:**
 
-### [2.0.1] – 2025-10-05
+* Version bumped to 2.0.0
+* Packaging updated for PyPI
 
-**Changed**
+**Removed:**
 
-* Removed incorrect dependency `sqlite3` from `setup.py`.
-  (SQLite is bundled with Python ≥ 3.6.)
-
----
-
-### [2.0.0] – 2025-10-04
-
-**Added**
-
-* Comprehensive Google-style docstrings across all modules.
-* Sandbox functionality is active and maintained within the package.
-
-**Changed**
-
-* Version bumped to `2.0.0`.
-* Packaging files updated for PyPI release.
-
-**Removed**
-
-* Cryptography-related code removed.
-  Encryption and signing must now be handled externally.
-
-**Notes**
-
-* Sandbox behavior is active; users should test under their own runtime conditions.
+* Cryptography code; encryption must now be handled externally
 
 ---
 
 ## Contributing
 
-* Follow **Google-style docstrings**.
-* Run `pdoc` or Sphinx (with napoleon) to generate docs.
-* Submit issues or PRs on GitHub.
+* Use Google-style docstrings for documentation
+* Run `pdoc` or Sphinx (with napoleon) to generate API docs
+* Report issues and submit PRs on GitHub
 
 ---
 
@@ -257,4 +219,9 @@ See `test_sync.py` and `test_async.py` in the repository for complete demonstrat
 MIT License © 2025 LiveDict
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
 
-> **LiveDict** – TTL-based Python key-value store by [hemanshu03](https://github.com/hemanshu03)
+**Credit line for docs/acknowledgements:**
+
+> LiveDict - TTL-based Python key-value store by [hemanshu03](https://github.com/hemanshu03)
+
+---
+
