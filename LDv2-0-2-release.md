@@ -254,7 +254,7 @@ See `test_sync.py` and `test_async.py` in the repository for complete demonstrat
 
 ## License
 
-MIT License © 2025 LiveDict
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
+GNU Affero General Public License v3.0 © 2025 Hemanshu Vaidya  
+[![GitHub license](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
 
 > **LiveDict** – TTL-based Python key-value store by [hemanshu03](https://github.com/hemanshu03)
