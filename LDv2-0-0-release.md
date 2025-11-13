@@ -216,8 +216,8 @@ See `testfile.py` in the repository for a complete demonstration of:
 
 ## License
 
-MIT License © 2025 LiveDict
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
+GNU Affero General Public License v3.0 © 2025 Hemanshu Vaidya  
+[![GitHub license](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
 
 **Credit line for docs/acknowledgements:**
 
