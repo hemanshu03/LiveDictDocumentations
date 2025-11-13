@@ -242,11 +242,13 @@ ld.set("session:123", {"user_id": 42}, ttl=600, persist=True, backend="sql")
 
 ## License & authorship
 
-MIT License. © 2025 LiveDict. All rights reserved.
+GNU Affero General Public License v3.0 © 2025 Hemanshu Vaidya. All rights reserved.
+[![GitHub license](https://img.shields.io/badge/license-AGPL--3.0-blue.svg)](https://github.com/hemanshu03/LiveDict/blob/main/LICENSE)
 
 ---
 
 *End of release documentation for release version 1.0.4.*
+
 
 
 
